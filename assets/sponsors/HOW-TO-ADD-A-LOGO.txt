@@ -1,0 +1,39 @@
+ADDING A SPONSOR LOGO
+=====================
+
+1. Save the sponsor's logo file into this folder (assets/sponsors/).
+   - PNG with a transparent background is best. SVG also works.
+   - Aim for roughly 600px wide. Keep the file under 200 KB.
+   - Use a simple filename, no spaces: acme-energy.png
+
+2. Open index.html and find the section that starts with:
+      <!-- ===================== SPONSOR LOGO WALL
+
+3. Inside the correct tier group (The Cup, Crispy Sweaters, Biscuit
+   Backer, Clean Sheet, or Icing), replace ONE of these lines:
+
+      <a class="wall__open" href="#sponsors">Your Logo Here</a>
+
+   ...with this, edited for the sponsor:
+
+      <a href="https://acme-energy.com" target="_blank" rel="noopener">
+        <img src="assets/sponsors/acme-energy.png" alt="Acme Energy">
+      </a>
+
+   If the sponsor has no website, drop the <a> and use:
+
+      <div class="wall__tile">
+        <img src="assets/sponsors/acme-energy.png" alt="Acme Energy">
+      </div>
+
+4. Re-zip index.html plus the assets folder and re-upload to Tiiny.Host
+   using the Update button on your existing site.
+
+Notes
+-----
+- Tiles are white, so dark logos and color logos both look clean.
+- Logos scale automatically. Tall, wide, and square all fit.
+- Tile sizes get smaller as the tier price drops. That is intentional.
+- Leave the remaining "Your Logo Here" placeholders in place. They show
+  how many spots are still open and link back to the sponsorship tiers.
+- Once a tier sells out, that group will have no placeholders left.

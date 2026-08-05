@@ -133,14 +133,14 @@ p{margin:0}
 .brand__txt{font-family:var(--font-display);font-weight:700;text-transform:uppercase;
   font-size:.95rem;line-height:1.05;letter-spacing:.01em;color:var(--white)}
 .brand__txt span{display:block;color:var(--gold);font-size:.68rem;letter-spacing:.16em}
-.nav{display:flex;align-items:center;gap:1.9rem}
+.nav{display:flex;align-items:center;gap:1.55rem}
 .nav a{font-size:var(--text-sm);font-weight:500;text-decoration:none;color:#cfd5dc;
   letter-spacing:.03em;transition:color .15s;white-space:nowrap}
 .nav a:hover{color:var(--gold)}
 .nav .btn{padding:.7rem 1.25rem}
 .navtoggle{display:none;background:none;border:1px solid var(--line);color:var(--white);
   border-radius:var(--radius);padding:.55rem .8rem;font-size:var(--text-sm);cursor:pointer}
-@media (max-width:940px){
+@media (max-width:1080px){
   .nav{position:fixed;inset:74px 0 auto 0;background:#000;flex-direction:column;
     align-items:stretch;gap:0;padding:.5rem var(--pad) 1.5rem;border-bottom:1px solid var(--line);
     display:none}
@@ -312,6 +312,44 @@ p{margin:0}
 .impact a:hover{border-bottom-color:var(--gold)}
 @media (max-width:760px){.impact{grid-template-columns:1fr}}
 
+/* ---------- Sponsor logo wall ---------- */
+.wall-sec{background:var(--black);border-top:1px solid var(--line-soft)}
+.wall-group{margin-top:2.6rem}
+.wall-group + .wall-group{margin-top:2.8rem}
+.wall-group__head{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;
+  padding-bottom:.9rem;border-bottom:1px solid var(--line)}
+.wall-group__name{font-family:var(--font-display);font-size:1.3rem;color:var(--white)}
+.wall-group__amt{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);font-weight:700}
+.wall{display:grid;gap:1rem;margin-top:1.4rem}
+.wall--cup{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.wall--lg{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
+.wall--md{grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
+.wall--sm{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
+.wall a,.wall .wall__tile{
+  display:flex;align-items:center;justify-content:center;
+  background:#fff;border-radius:12px;padding:1.4rem 1.2rem;
+  transition:transform .2s cubic-bezier(.16,1,.3,1),box-shadow .2s;
+}
+.wall--cup a,.wall--cup .wall__tile{min-height:148px}
+.wall--lg a,.wall--lg .wall__tile{min-height:124px}
+.wall--md a,.wall--md .wall__tile{min-height:104px}
+.wall--sm a,.wall--sm .wall__tile{min-height:88px}
+.wall a:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.5)}
+.wall img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block}
+.wall a.wall__open{
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  border:1px dashed #333940;border-radius:12px;background:transparent;box-shadow:none;
+  color:var(--steel-dim);font-size:var(--text-xs);letter-spacing:.14em;
+  text-transform:uppercase;font-weight:700;padding:1.4rem 1rem;text-decoration:none;
+  transition:border-color .2s,color .2s;
+}
+.wall a.wall__open:hover{border-color:var(--gold);color:var(--gold);transform:none;box-shadow:none}
+.wall--cup .wall__open{min-height:148px}
+.wall--lg .wall__open{min-height:124px}
+.wall--md .wall__open{min-height:104px}
+.wall--sm .wall__open{min-height:88px}
+
 /* ---------- Bracket table ---------- */
 .bracket-wrap{margin-top:2.2rem;overflow-x:auto;-webkit-overflow-scrolling:touch;
   border:1px solid var(--line);border-radius:12px}
@@ -379,6 +417,7 @@ p{margin:0}
       <a href="#impact">Impact</a>
       <a href="#schedule">Game Day</a>
       <a href="#sponsors">Sponsorship</a>
+      <a href="#partners">Our Sponsors</a>
       <a href="#contact">Contact</a>
       <a class="btn btn--gold" href="#register">Register</a>
     </nav>
@@ -727,6 +766,91 @@ p{margin:0}
   </div>
 </section>
 
+<!-- ===================== SPONSOR LOGO WALL =====================
+     ADD A SPONSOR LOGO IN TWO STEPS:
+       1. Drop the logo file into  assets/sponsors/
+          (PNG with a transparent background or SVG works best)
+       2. Copy this line into the right tier group below and edit it:
+
+          <a href="https://sponsor-website.com" target="_blank" rel="noopener">
+            <img src="assets/sponsors/filename.png" alt="Sponsor Name">
+          </a>
+
+     Delete one "Your Logo Here" placeholder each time you add a real logo.
+     Tiles are white, so any logo shows up cleanly. Nothing else to change.
+================================================================= -->
+<section class="section wall-sec reveal" id="partners">
+  <div class="wrap">
+    <p class="kicker">Our Sponsors</p>
+    <h2 style="font-size:var(--text-2xl);color:var(--white);max-width:20ch">The Companies Behind the Boards.</h2>
+    <p class="muted" style="margin-top:1rem;max-width:60ch">These are the operators, service companies, and suppliers making the 2026 tournament happen. Every logo here is a check written to a local nonprofit.</p>
+
+    <!-- ============ THE CUP — $8,000 ============ -->
+    <div class="wall-group">
+      <div class="wall-group__head">
+        <span class="wall-group__name">The Cup</span>
+        <span class="wall-group__amt">$8,000 &middot; 2 spots</span>
+      </div>
+      <div class="wall wall--cup">
+        <a class="wall__open" href="#sponsors">Your Logo Here</a>
+        <a class="wall__open" href="#sponsors">Your Logo Here</a>
+      </div>
+    </div>
+
+    <!-- ============ CRISPY SWEATERS — $4,000 ============ -->
+    <div class="wall-group">
+      <div class="wall-group__head">
+        <span class="wall-group__name">Crispy Sweaters</span>
+        <span class="wall-group__amt">$4,000 &middot; 4 spots</span>
+      </div>
+      <div class="wall wall--lg">
+        <a class="wall__open" href="#sponsors">Your Logo Here</a>
+        <a class="wall__open" href="#sponsors">Your Logo Here</a>
+        <a class="wall__open" href="#sponsors">Your Logo Here</a>
+        <a class="wall__open" href="#sponsors">Your Logo Here</a>
+      </div>
+    </div>
+
+    <!-- ============ BISCUIT BACKER — $2,500 ============ -->
+    <div class="wall-group">
+      <div class="wall-group__head">
+        <span class="wall-group__name">Biscuit Backer</span>
+        <span class="wall-group__amt">$2,500 &middot; 1 spot</span>
+      </div>
+      <div class="wall wall--md">
+        <a class="wall__open" href="#sponsors">Your Logo Here</a>
+      </div>
+    </div>
+
+    <!-- ============ CLEAN SHEET — $1,000 ============ -->
+    <div class="wall-group">
+      <div class="wall-group__head">
+        <span class="wall-group__name">Clean Sheet</span>
+        <span class="wall-group__amt">$1,000 &middot; 1 spot</span>
+      </div>
+      <div class="wall wall--md">
+        <a class="wall__open" href="#sponsors">Your Logo Here</a>
+      </div>
+    </div>
+
+    <!-- ============ ICING (BAR & FOOD) — $500 ============ -->
+    <div class="wall-group">
+      <div class="wall-group__head">
+        <span class="wall-group__name">Icing</span>
+        <span class="wall-group__amt">$500 &middot; 10 spots</span>
+      </div>
+      <div class="wall wall--sm">
+        <a class="wall__open" href="#sponsors">Your Logo Here</a>
+        <a class="wall__open" href="#sponsors">Your Logo Here</a>
+        <a class="wall__open" href="#sponsors">Your Logo Here</a>
+        <a class="wall__open" href="#sponsors">Your Logo Here</a>
+        <a class="wall__open" href="#sponsors">Your Logo Here</a>
+        <a class="wall__open" href="#sponsors">Your Logo Here</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== REGISTER =====================
      SET ALL LINKS IN THE "LINKS" OBJECT AT THE BOTTOM OF THIS FILE.
 ======================================================= -->
@@ -759,6 +883,7 @@ p{margin:0}
           <li><a href="#impact">Past Events &amp; Impact</a></li>
           <li><a href="#schedule">Game Day Schedule</a></li>
           <li><a href="#sponsors">Sponsorship Levels</a></li>
+          <li><a href="#partners">Our Sponsors</a></li>
           <li><a href="#register">Register</a></li>
         </ul>
       </div>
