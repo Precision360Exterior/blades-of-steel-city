@@ -3,7 +3,7 @@
 Website for the Blades of Steel City oil & gas charity hockey tournament.
 Started by and powered by NexTier, a Patterson-UTI company.
 
-**Live site:** https://precision360exterior.github.io/blades-of-steel-city/
+**Live site:** https://bladesofsteelcity.github.io
 
 | Event | Where | When |
 |---|---|---|
