@@ -312,6 +312,24 @@ p{margin:0}
 .impact a:hover{border-bottom-color:var(--gold)}
 @media (max-width:760px){.impact{grid-template-columns:1fr}}
 
+/* ---------- Powered by / gratitude ---------- */
+.powered{display:inline-flex;align-items:center;gap:.7rem;margin-top:1.6rem;
+  padding:.55rem 1.1rem;border:1px solid var(--line);border-radius:999px;
+  background:rgba(255,255,255,.03)}
+.powered span{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--steel-dim);font-weight:700}
+.powered strong{font-size:var(--text-sm);color:var(--white);font-weight:700;letter-spacing:.01em}
+.powered em{font-style:normal;font-size:var(--text-xs);color:var(--steel-dim)}
+@media (max-width:520px){.powered{flex-direction:column;gap:.25rem;border-radius:14px;text-align:center}}
+
+.thanks{margin-top:3.4rem;padding:2.4rem 2rem;border:1px solid var(--line);
+  border-radius:16px;background:var(--panel);border-left:3px solid var(--gold)}
+.thanks h3{font-family:var(--font-display);font-size:1.35rem;color:var(--white)}
+.thanks p{margin-top:.9rem;color:var(--steel);font-size:var(--text-base);
+  line-height:1.65;max-width:74ch}
+.thanks p + p{margin-top:.8rem}
+.thanks strong{color:var(--white)}
+
 /* ---------- Sponsor logo wall ---------- */
 .wall-sec{background:var(--black);border-top:1px solid var(--line-soft)}
 .wall-group{margin-top:2.6rem}
@@ -436,6 +454,12 @@ p{margin:0}
 
     <h1>Drop the Puck.<em>Lift the Community.</em></h1>
 
+    <p class="powered">
+      <span>Powered by</span>
+      <strong>NexTier</strong>
+      <em>a Patterson-UTI company</em>
+    </p>
+
     <p class="hero__sub">A half-day charity hockey tournament built by the oil &amp; gas industry — raising money for local nonprofits in the communities we operate in and around.</p>
 
     <dl class="hero__meta">
@@ -470,6 +494,7 @@ p{margin:0}
       <h2>Built by the Patch. For the Neighborhood.</h2>
       <dl class="facts">
         <div><dt>Founded</dt><dd>2025 &mdash; Pittsburgh, Pennsylvania</dd></div>
+          <div><dt>Started By</dt><dd>NexTier, a Patterson-UTI company</dd></div>
         <div><dt>Host Cities</dt><dd>Canonsburg, PA &amp; Odessa, TX</dd></div>
         <div><dt>Who Plays</dt><dd>Operators, midstream, service companies, and suppliers</dd></div>
         <div><dt>Raised To Date</dt><dd>$38,500 across two events</dd></div>
@@ -848,6 +873,14 @@ p{margin:0}
         <a class="wall__open" href="#sponsors">Your Logo Here</a>
       </div>
     </div>
+
+    <!-- ============ THANK YOU ============ -->
+    <div class="thanks">
+      <h3>Thank You</h3>
+      <p>Blades of Steel City was started by <strong>NexTier, a Patterson-UTI company</strong>, and it has only gotten this far because of the operators, service companies, suppliers, and vendors across the Appalachian and Permian basins who said yes when we asked.</p>
+      <p>To every company that has written a check, donated equipment, covered ice time, put a team on the sheet, or sent people to volunteer &mdash; and to <strong>Printscape Arena</strong>, <strong>Bubba's</strong>, and the officials and rink staff who make game day run &mdash; thank you. Over $38,500 has reached local nonprofits because of you.</p>
+      <p class="small" style="color:var(--steel-dim);margin-top:1.2rem">Contributed and want to be named here? Email <a href="mailto:bladesofsteelcity@gmail.com" style="color:var(--gold)">bladesofsteelcity@gmail.com</a>.</p>
+    </div>
   </div>
 </section>
 
@@ -896,7 +929,7 @@ p{margin:0}
       </div>
     </div>
     <div class="footer__bar">
-      <span>© 2026 Blades of Steel City. All rights reserved.</span>
+      <span>© 2026 Blades of Steel City. All rights reserved. &nbsp;·&nbsp; Powered by NexTier, a Patterson-UTI company.</span>
       <span>Pittsburgh, PA · Odessa, TX</span>
     </div>
   </div>
