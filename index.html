@@ -322,6 +322,16 @@ p{margin:0}
 .powered em{font-style:normal;font-size:var(--text-xs);color:var(--steel-dim)}
 @media (max-width:520px){.powered{flex-direction:column;gap:.25rem;border-radius:14px;text-align:center}}
 
+/* ---------- Format & requirements cards ---------- */
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);
+  margin-top:2.4rem;border-radius:12px;overflow:hidden}
+.rules > div{background:var(--panel);padding:1.5rem 1.5rem 1.6rem}
+.rules h3{font-size:.95rem;color:var(--gold);font-family:var(--font-body);
+  font-weight:700;letter-spacing:.02em}
+.rules p{margin-top:.55rem;font-size:var(--text-sm);color:var(--steel);line-height:1.6}
+.rules strong{color:var(--white)}
+
 .thanks{margin-top:3.4rem;padding:2.4rem 2rem;border:1px solid var(--line);
   border-radius:16px;background:var(--panel);border-left:3px solid var(--gold)}
 .thanks h3{font-family:var(--font-display);font-size:1.35rem;color:var(--white)}
@@ -610,6 +620,33 @@ p{margin:0}
     <h2 style="font-size:var(--text-2xl);color:var(--white);max-width:18ch">Schedule of Events &mdash; Nov 12, 2026</h2>
     <p class="muted" style="margin-top:1rem;max-width:58ch">Four teams, two sheets, one half day. Games run on the UPMC Rink and Rink 2 at Printscape Arena.</p>
 
+    <!-- FORMAT &amp; REQUIREMENTS — edit the four cards below -->
+    <div class="rules">
+      <div>
+        <h3>Game Format</h3>
+        <p><strong>20-minute single-period games.</strong> Each team plays three
+        round-robin games plus one placement game &mdash; four games on the day.</p>
+      </div>
+      <div>
+        <h3>Rules of Play</h3>
+        <p><strong>Adult league rules apply.</strong> Officiated by Printscape
+        Arena staff. This is a charity tournament &mdash; play hard, play smart,
+        everybody gets back to work on Monday.</p>
+      </div>
+      <div>
+        <h3>Equipment</h3>
+        <p><strong>Full equipment is required</strong> and is not optional:
+        helmet, gloves, shoulder and elbow pads, shin guards, hockey pants,
+        skates, and stick. Jerseys are provided at check-in.</p>
+      </div>
+      <div>
+        <h3>Who Can Play</h3>
+        <p><strong>Current or past ice hockey experience is required.</strong>
+        This is not a learn-to-skate event. Players must be comfortable skating
+        in a competitive game setting.</p>
+      </div>
+    </div>
+
     <div class="timeline">
       <div class="slot"><div class="slot__time">7:30 AM</div>
         <div><div class="slot__t">Check-In &amp; Registration</div>
@@ -891,6 +928,8 @@ p{margin:0}
     <p class="kicker kicker--center">Registration</p>
     <h2>Claim Your Ice Time</h2>
     <p>Player registration and sponsorships are processed through our secure payment portal. Spots are limited by available ice — first paid, first confirmed.</p>
+    <p style="margin-top:.9rem">Players must have <strong style="color:#fff">current or past ice hockey experience</strong>
+    and bring <strong style="color:#fff">full equipment</strong>. Games are 20-minute single periods under adult league rules.</p>
     <div class="register__cta">
       <a class="btn btn--dark" href="#" data-link="player">Register as a Player</a>
       <a class="btn btn--outline-dark" href="#sponsors">Choose a Sponsorship</a>
