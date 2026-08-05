@@ -237,7 +237,7 @@ p{margin:0}
 .card__foot{margin-top:auto;padding-top:1.6rem}
 
 /* --- schedule --- */
-.schedule{background:var(--ink)}
+.schedule{background:var(--black);border-top:1px solid var(--line-soft)}
 .timeline{margin-top:2.6rem;border-top:1px solid var(--line)}
 .slot{
   display:grid;grid-template-columns:150px 1fr;gap:1.5rem;
@@ -253,10 +253,19 @@ p{margin:0}
   .slot__time{font-size:1.05rem}}
 
 /* --- sponsorship --- */
-.sponsors{background:var(--black);border-top:1px solid var(--line-soft)}
-.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.8rem}
-@media (max-width:1040px){.tiers{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:640px){.tiers{grid-template-columns:1fr}}
+.sponsors{background:var(--ink);border-top:1px solid var(--line-soft)}
+.tiers{display:grid;grid-template-columns:repeat(6,1fr);gap:1.25rem;margin-top:2.8rem}
+.tiers > .tier:nth-child(-n+3){grid-column:span 2}
+.tiers > .tier:nth-child(n+4){grid-column:span 3}
+@media (max-width:1040px){
+  .tiers{grid-template-columns:repeat(2,1fr)}
+  .tiers > .tier:nth-child(-n+3),.tiers > .tier:nth-child(n+4){grid-column:span 1}
+  .tiers > .tier:nth-child(1){grid-column:span 2}
+}
+@media (max-width:640px){
+  .tiers{grid-template-columns:1fr}
+  .tiers > .tier,.tiers > .tier:nth-child(1){grid-column:span 1}
+}
 .tier{
   background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
   padding:1.9rem 1.6rem;display:flex;flex-direction:column;
@@ -275,6 +284,12 @@ p{margin:0}
 .tier ul{list-style:none;margin:1.5rem 0 0;padding:0;display:grid;gap:.65rem;
   border-top:1px solid var(--line-soft);padding-top:1.35rem}
 .tier li{position:relative;padding-left:1.5rem;font-size:var(--text-sm);color:#cdd3da;line-height:1.5}
+.tier{display:flex;flex-direction:column}
+.tier__sub{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--steel);
+  font-weight:700;margin-top:.35rem}
+.tier__foot{margin-top:auto;padding-top:1.6rem}
+.btn--sm{padding:.72rem 1.3rem;font-size:.78rem;width:100%;justify-content:center}
+.btn[aria-disabled="true"]{opacity:.45;pointer-events:none}
 .tier li::before{content:"";position:absolute;left:0;top:.5em;width:8px;height:8px;
   background:var(--gold);transform:rotate(45deg)}
 .sponsor-note{
@@ -283,6 +298,38 @@ p{margin:0}
 }
 .sponsor-note p{font-size:var(--text-sm);color:var(--steel)}
 .sponsor-note strong{color:var(--white)}
+
+/* ---------- Past events / impact ---------- */
+.impact-sec{background:var(--ink);border-top:1px solid var(--line-soft)}
+.impact{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:2.6rem}
+.impact article{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1.9rem}
+.impact__yr{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.impact__amt{font-family:var(--font-display);font-size:clamp(2rem,4.2vw,2.9rem);color:var(--white);
+  line-height:1;margin:.7rem 0 .1rem}
+.impact h3{font-size:var(--text-base);color:var(--white);margin:1.1rem 0 .3rem}
+.impact p{font-size:var(--text-sm);color:var(--steel);line-height:1.6}
+.impact a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(250,197,38,.35)}
+.impact a:hover{border-bottom-color:var(--gold)}
+@media (max-width:760px){.impact{grid-template-columns:1fr}}
+
+/* ---------- Bracket table ---------- */
+.bracket-wrap{margin-top:2.2rem;overflow-x:auto;-webkit-overflow-scrolling:touch;
+  border:1px solid var(--line);border-radius:12px}
+.bracket{border-collapse:collapse;width:100%;min-width:760px;font-size:var(--text-sm)}
+.bracket th,.bracket td{padding:.9rem 1rem;text-align:left;border-bottom:1px solid var(--line-soft);
+  border-right:1px solid var(--line-soft);white-space:nowrap;vertical-align:top}
+.bracket th:last-child,.bracket td:last-child{border-right:none}
+.bracket tr:last-child td{border-bottom:none}
+.bracket thead th{background:#15181c;color:var(--gold);font-family:var(--font-body);font-weight:700;
+  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+.bracket tbody th{font-family:var(--font-display);font-size:1.05rem;color:var(--white);background:#0d1013}
+.bracket td{color:#dfe4ea}
+.bracket td small{display:block;color:var(--steel);font-size:.72rem;letter-spacing:.1em;
+  text-transform:uppercase;margin-top:.2rem}
+.bracket .warm{color:var(--gold)}
+.bracket tbody tr:hover td{background:rgba(250,197,38,.04)}
+.scroll-hint{font-size:var(--text-xs);color:var(--steel);margin-top:.7rem;letter-spacing:.06em}
+@media (min-width:860px){.scroll-hint{display:none}}
 
 /* --- register --- */
 .register{background:var(--gold);color:#0a0a0a;text-align:center}
@@ -328,10 +375,11 @@ p{margin:0}
     <nav class="nav" id="nav" aria-label="Main">
       <a href="#mission">Our Mission</a>
       <a href="#events">Events</a>
+      <a href="#impact">Impact</a>
       <a href="#schedule">Game Day</a>
       <a href="#sponsors">Sponsorship</a>
       <a href="#contact">Contact</a>
-      <a class="btn btn--gold" href="#register" data-reg>Register</a>
+      <a class="btn btn--gold" href="#register">Register</a>
     </nav>
   </div>
 </header>
@@ -358,7 +406,7 @@ p{margin:0}
     </dl>
 
     <div class="hero__cta">
-      <a class="btn btn--gold" href="#register" data-reg>Register Your Team</a>
+      <a class="btn btn--gold" href="#" data-link="player">Register as a Player</a>
       <a class="btn btn--ghost" href="#sponsors">Become a Sponsor</a>
     </div>
   </div>
@@ -367,10 +415,10 @@ p{margin:0}
 <!-- ===================== STAT BAND ===================== -->
 <section class="band" aria-label="Event at a glance">
   <div class="band__grid">
-    <div><strong>2</strong><span>Cities · PA &amp; TX</span></div>
-    <div><strong>100%</strong><span>Net proceeds donated</span></div>
-    <div><strong>1/2 Day</strong><span>On &amp; off the ice</span></div>
-    <div><strong>Local</strong><span>Nonprofit partners</span></div>
+    <div><strong>$38,500</strong><span>Raised to date</span></div>
+    <div><strong>2</strong><span>Nonprofits supported</span></div>
+    <div><strong>4 Teams</strong><span>Two sheets of ice</span></div>
+    <div><strong>1/2 Day</strong><span>Puck drop to reception</span></div>
   </div>
 </section>
 
@@ -381,10 +429,10 @@ p{margin:0}
       <p class="kicker">Who We Are</p>
       <h2>Built by the Patch. For the Neighborhood.</h2>
       <dl class="facts">
-        <div><dt>Founded</dt><dd>2026 — Pittsburgh, Pennsylvania</dd></div>
+        <div><dt>Home Ice</dt><dd>Pittsburgh, Pennsylvania</dd></div>
         <div><dt>Host Cities</dt><dd>Canonsburg, PA &amp; Odessa, TX</dd></div>
         <div><dt>Who Plays</dt><dd>Operators, midstream, service companies, and suppliers</dd></div>
-        <div><dt>Where It Goes</dt><dd>Nonprofits serving our host communities</dd></div>
+        <div><dt>Raised To Date</dt><dd>$38,500 across two events</dd></div>
       </dl>
     </div>
     <div>
@@ -418,6 +466,7 @@ p{margin:0}
         <h2>Two Cities. Two Tournaments.</h2>
       </div>
       <p class="small" style="max-width:34ch">We drop the puck in the Steel City, then take it to the Permian Basin.</p>
+
     </div>
 
     <div class="cards">
@@ -425,24 +474,25 @@ p{margin:0}
       <article class="card card--live">
         <span class="tag tag--gold">Registration Open</span>
         <h3>Blades of Steel City 2026</h3>
-        <p class="card__city">Pittsburgh · Inaugural Event</p>
+        <p class="card__city">Pittsburgh · Appalachian Basin</p>
         <dl>
           <div><dt>Date</dt><dd>Thursday, November 12, 2026</dd></div>
+          <div><dt>Times</dt><dd>Check-in 7:30 AM &middot; First puck 9:00 AM</dd></div>
           <div><dt>Venue</dt><dd>Printscape Arena at Southpointe</dd></div>
           <div><dt>Address</dt><dd>114 Southpointe Blvd, Canonsburg, PA 15317<br>
             <a href="https://maps.google.com/?q=Printscape+Arena+114+Southpointe+Blvd+Canonsburg+PA+15317" target="_blank" rel="noopener">Get directions</a></dd></div>
-          <div><dt>Format</dt><dd>Half-day round robin, dual sheets, championship final</dd></div>
-          <div><dt>Benefiting</dt><dd>Local nonprofit partners in the Appalachian Basin</dd></div>
+          <div><dt>Format</dt><dd>Four teams, three-game round robin plus placement games across two sheets — UPMC Rink and Rink 2</dd></div>
+          <div><dt>After</dt><dd>Reception next door at Bubba's</dd></div>
         </dl>
         <div class="card__foot">
-          <a class="btn btn--gold" href="#register" data-reg>Register a Team</a>
+          <a class="btn btn--gold" href="#" data-link="player">Register as a Player</a>
         </div>
       </article>
 
       <!-- 2027 ODESSA -->
       <article class="card">
         <span class="tag">Tentative — Details Coming</span>
-        <h3>Blades of Steel City 2027</h3>
+        <h3>Twig &amp; Puck 2027</h3>
         <p class="card__city">Odessa, Texas · Permian Basin</p>
         <dl>
           <div><dt>Date</dt><dd>February 2027 <span class="small">(tentative)</span></dd></div>
@@ -458,157 +508,234 @@ p{margin:0}
   </div>
 </section>
 
+
+<!-- ===================== PAST EVENTS / IMPACT ===================== -->
+<section class="section impact-sec reveal" id="impact">
+  <div class="wrap">
+    <p class="kicker">Track Record</p>
+    <h2 style="font-size:var(--text-2xl);color:var(--white);max-width:20ch">Where the Money Went.</h2>
+    <p class="muted" style="margin-top:1rem;max-width:60ch">Every dollar raised on the ice is presented to a nonprofit doing work in the community that hosted the tournament. Here is what our events have delivered so far.</p>
+
+    <div class="impact">
+      <article>
+        <div class="impact__yr">Pittsburgh &middot; 2025</div>
+        <div class="impact__amt">$14,500</div>
+        <h3>The LeMoyne Community Center</h3>
+        <p>Washington, Pennsylvania &mdash; serving Washington County youth since 1956 with after-school programming, summer camps, and a monthly food bank. <a href="https://www.lemoynecommunitycenter.org/" target="_blank" rel="noopener">Visit LeMoyne Community Center</a></p>
+      </article>
+
+      <article>
+        <div class="impact__yr">Twig &amp; Puck &middot; West Texas 2026</div>
+        <div class="impact__amt">$24,000</div>
+        <h3>West Texas Gifts of Hope</h3>
+        <p>Odessa, Texas &mdash; operates Hope House, providing no-cost lodging and patient-care support for cancer patients traveling for treatment from across the Permian Basin. <a href="https://www.westtexasgiftsofhope.org/" target="_blank" rel="noopener">Visit West Texas Gifts of Hope</a></p>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== GAME DAY SCHEDULE =====================
-     EDIT TIMES HERE — each .slot is one line item.
+     RUN OF SHOW: each .slot is one line item.
+     BRACKET: each <tr> in the .bracket table is one team.
 ================================================================ -->
 <section class="section schedule reveal" id="schedule">
   <div class="wrap">
     <p class="kicker">Game Day</p>
-    <h2 style="font-size:var(--text-2xl);color:var(--white);max-width:18ch">Schedule of Events — Nov 12, 2026</h2>
-    <p class="muted" style="margin-top:1rem;max-width:58ch">Doors to final horn in a single half day. Times are subject to final ice allocation and team count.</p>
+    <h2 style="font-size:var(--text-2xl);color:var(--white);max-width:18ch">Schedule of Events &mdash; Nov 12, 2026</h2>
+    <p class="muted" style="margin-top:1rem;max-width:58ch">Four teams, two sheets, one half day. Games run on the UPMC Rink and Rink 2 at Printscape Arena.</p>
 
     <div class="timeline">
-      <div class="slot"><div class="slot__time">10:30 AM</div>
-        <div><div class="slot__t">Check-In &amp; Locker Room Assignments</div>
-        <div class="slot__d">Team registration table opens. Jerseys distributed, waivers collected, coffee on.</div></div></div>
+      <div class="slot"><div class="slot__time">7:30 AM</div>
+        <div><div class="slot__t">Check-In &amp; Registration</div>
+        <div class="slot__d">Locker room assignments, jerseys distributed, waivers collected, coffee on.</div></div></div>
 
-      <div class="slot"><div class="slot__time">11:15 AM</div>
-        <div><div class="slot__t">Captains &amp; Officials Meeting</div>
-        <div class="slot__d">Format, rules, and safety briefing with tournament officials.</div></div></div>
+      <div class="slot"><div class="slot__time">9:00 AM</div>
+        <div><div class="slot__t">First Warm-Ups</div>
+        <div class="slot__d">Teams A and B take the UPMC Rink at 9:00. Teams C and D take Rink 2 at 9:15.</div></div></div>
 
-      <div class="slot"><div class="slot__time">11:45 AM</div>
-        <div><div class="slot__t">Opening Remarks &amp; Ceremonial Puck Drop</div>
-        <div class="slot__d">Welcome from Blades of Steel City and this year's nonprofit partners.</div></div></div>
+      <div class="slot"><div class="slot__time">9:05 AM</div>
+        <div><div class="slot__t">Round Robin Begins</div>
+        <div class="slot__d">Three games per team running simultaneously across both sheets. Full grid below.</div></div></div>
 
-      <div class="slot"><div class="slot__time">12:00 PM</div>
-        <div><div class="slot__t">Round Robin Play Begins</div>
-        <div class="slot__d">Games run simultaneously on both sheets. Running clock, timed periods.</div></div></div>
+      <div class="slot"><div class="slot__time">12:20 PM</div>
+        <div><div class="slot__t">Consolation Placement Game</div>
+        <div class="slot__d">Third and fourth seeds meet on Rink 2.</div></div></div>
 
-      <div class="slot"><div class="slot__time">2:30 PM</div>
-        <div><div class="slot__t">Consolation Game</div>
-        <div class="slot__d">Third-place matchup on the main sheet.</div></div></div>
+      <div class="slot"><div class="slot__time">12:35 PM</div>
+        <div><div class="slot__t">Championship Placement Game</div>
+        <div class="slot__d">Top two seeds play for the title on the UPMC Rink.</div></div></div>
 
-      <div class="slot"><div class="slot__time">3:15 PM</div>
-        <div><div class="slot__t">Championship Game</div>
-        <div class="slot__d">Top two seeds play for the Blades of Steel City Cup.</div></div></div>
-
-      <div class="slot"><div class="slot__time">4:15 PM</div>
-        <div><div class="slot__t">Awards &amp; Charity Check Presentation</div>
-        <div class="slot__d">Trophy presentation, MVP awards, and the on-ice donation to our nonprofit partners.</div></div></div>
-
-      <div class="slot"><div class="slot__time">4:45 PM</div>
-        <div><div class="slot__t">Post-Game Reception</div>
-        <div class="slot__d">Food, drinks, raffle, and networking with players, sponsors, and guests.</div></div></div>
-
-      <div class="slot"><div class="slot__time">6:30 PM</div>
-        <div><div class="slot__t">Event Concludes</div>
-        <div class="slot__d">Safe travels — see you in Odessa.</div></div></div>
+      <div class="slot"><div class="slot__time">After</div>
+        <div><div class="slot__t">Reception at Bubba's</div>
+        <div class="slot__d">Right next door &mdash; food, drinks, awards, and the charity check presentation.</div></div></div>
     </div>
+
+    <h3 style="font-family:var(--font-display);font-size:1.45rem;color:var(--white);margin-top:3.4rem">Team-by-Team Grid</h3>
+    <div class="bracket-wrap">
+      <table class="bracket">
+        <thead>
+          <tr>
+            <th scope="col">Team</th>
+            <th scope="col">First Warm-Up</th>
+            <th scope="col">Game 1</th>
+            <th scope="col">Game 2</th>
+            <th scope="col">Game 3</th>
+            <th scope="col">Placement Game</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Team A</th>
+            <td class="warm">9:00&ndash;9:05<small>UPMC</small></td>
+            <td>9:05 vs B<small>UPMC</small></td>
+            <td>10:05 vs C<small>UPMC</small></td>
+            <td>11:05 vs D<small>UPMC</small></td>
+            <td>12:20 if No. 3/4<small>Rink 2</small>12:35 if No. 1/2<small>UPMC</small></td>
+          </tr>
+          <tr>
+            <th scope="row">Team B</th>
+            <td class="warm">9:00&ndash;9:05<small>UPMC</small></td>
+            <td>9:05 vs A<small>UPMC</small></td>
+            <td>10:20 vs D<small>Rink 2</small></td>
+            <td>11:20 vs C<small>Rink 2</small></td>
+            <td>12:20 if No. 3/4<small>Rink 2</small>12:35 if No. 1/2<small>UPMC</small></td>
+          </tr>
+          <tr>
+            <th scope="row">Team C</th>
+            <td class="warm">9:15&ndash;9:20<small>Rink 2</small></td>
+            <td>9:20 vs D<small>Rink 2</small></td>
+            <td>10:05 vs A<small>UPMC</small></td>
+            <td>11:20 vs B<small>Rink 2</small></td>
+            <td>12:20 if No. 3/4<small>Rink 2</small>12:35 if No. 1/2<small>UPMC</small></td>
+          </tr>
+          <tr>
+            <th scope="row">Team D</th>
+            <td class="warm">9:15&ndash;9:20<small>Rink 2</small></td>
+            <td>9:20 vs C<small>Rink 2</small></td>
+            <td>10:20 vs B<small>Rink 2</small></td>
+            <td>11:05 vs A<small>UPMC</small></td>
+            <td>12:20 if No. 3/4<small>Rink 2</small>12:35 if No. 1/2<small>UPMC</small></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="scroll-hint">Swipe the grid sideways to see every game &rarr;</p>
   </div>
 </section>
 
 <!-- ===================== SPONSORSHIP =====================
      EDIT TIERS HERE — each .tier block is one sponsorship level.
+     Each tier's checkout link is set in the LINKS object at the
+     bottom of this file, keyed by the data-link value on its button.
 ========================================================== -->
 <section class="section sponsors reveal" id="sponsors">
   <div class="wrap">
     <p class="kicker">Sponsorship</p>
     <h2 style="font-size:var(--text-2xl);color:var(--white);max-width:16ch">Put Your Brand on the Boards.</h2>
-    <p class="muted" style="margin-top:1rem;max-width:60ch">Sponsorship underwrites the ice, the jerseys, and the reception — which means more of every registration dollar reaches the nonprofits we support. All levels include recognition on this site and at the arena.</p>
+    <p class="muted" style="margin-top:1rem;max-width:60ch">Sponsorship underwrites the ice, the jerseys, and the reception — which means more of every dollar raised reaches the nonprofits we support. Most levels include skater spots, so your team plays and your brand shows.</p>
 
     <div class="tiers">
       <div class="tier tier--top">
-        <div class="tier__name">Presenting Sponsor</div>
-        <div class="tier__price">$25,000</div>
-        <div class="tier__avail" style="color:rgba(255,255,255,.6)">1 available</div>
+        <div class="tier__name">The Cup</div>
+        <div class="tier__price">$8,000</div>
+        <div class="tier__avail" style="color:rgba(255,255,255,.6)">2 available</div>
         <ul>
-          <li>Naming rights: "Blades of Steel City presented by [Your Company]"</li>
-          <li>Two complimentary team entries (up to 34 players)</li>
-          <li>Center-ice logo placement and premium dasher boards</li>
-          <li>Logo on all team jerseys</li>
-          <li>Speaking role at opening ceremony and check presentation</li>
-          <li>Featured placement on website, emails, and event signage</li>
+          <li>Custom team jersey</li>
+          <li>4 skaters</li>
+          <li>Name on water bottles</li>
+          <li>Name on event banner</li>
+          <li>Name on event apparel</li>
+          <li>Shoutout at the event and on social media</li>
         </ul>
+        <div class="tier__foot">
+          <a class="btn btn--gold btn--sm" href="#" data-link="cup">Sponsor The Cup</a>
+        </div>
       </div>
 
       <div class="tier">
-        <div class="tier__name">Championship</div>
-        <div class="tier__price">$15,000</div>
-        <div class="tier__avail">2 available</div>
+        <div class="tier__name">Crispy Sweaters</div>
+        <div class="tier__price">$4,000</div>
+        <div class="tier__avail">4 available</div>
         <ul>
-          <li>Championship game and trophy naming rights</li>
-          <li>One complimentary team entry</li>
-          <li>Dasher board and Jumbotron/scoreboard placement</li>
-          <li>Logo on jersey sleeve</li>
-          <li>Website, email, and signage recognition</li>
+          <li>Custom team jersey</li>
+          <li>2 skaters</li>
+          <li>Name on event banner</li>
+          <li>Name on event shirt</li>
+          <li>Mic shoutout at the event</li>
+          <li>Social media shoutout</li>
         </ul>
+        <div class="tier__foot">
+          <a class="btn btn--ghost btn--sm" href="#" data-link="crispy">Sponsor This Level</a>
+        </div>
       </div>
 
       <div class="tier">
-        <div class="tier__name">Zamboni</div>
-        <div class="tier__price">$10,000</div>
-        <div class="tier__avail">2 available</div>
-        <ul>
-          <li>Full Zamboni wrap or panel branding all day</li>
-          <li>One complimentary team entry</li>
-          <li>Dasher board placement</li>
-          <li>Reception recognition and website listing</li>
-        </ul>
-      </div>
-
-      <div class="tier">
-        <div class="tier__name">Locker Room</div>
-        <div class="tier__price">$5,000</div>
-        <div class="tier__avail">6 available</div>
-        <ul>
-          <li>Branded locker room for one team</li>
-          <li>Four player spots on a house team</li>
-          <li>Dasher board placement</li>
-          <li>Website and signage recognition</li>
-        </ul>
-      </div>
-
-      <div class="tier">
-        <div class="tier__name">Penalty Box</div>
+        <div class="tier__name">Biscuit Backer</div>
         <div class="tier__price">$2,500</div>
-        <div class="tier__avail">Unlimited</div>
+        <div class="tier__avail">1 available</div>
         <ul>
-          <li>Penalty box or bench signage</li>
-          <li>Two player spots on a house team</li>
-          <li>Website and program recognition</li>
+          <li>Your logo on the game pucks</li>
+          <li>2 skaters</li>
+          <li>Name on event banner</li>
+          <li>Name on event shirt</li>
+          <li>Mic shoutout at the event</li>
+          <li>Social media shoutout</li>
         </ul>
+        <div class="tier__foot">
+          <a class="btn btn--ghost btn--sm" href="#" data-link="biscuit">Sponsor This Level</a>
+        </div>
       </div>
 
       <div class="tier">
-        <div class="tier__name">Face-Off</div>
+        <div class="tier__name">Clean Sheet</div>
         <div class="tier__price">$1,000</div>
-        <div class="tier__avail">Unlimited</div>
+        <div class="tier__avail">1 available</div>
         <ul>
-          <li>Rink-level signage</li>
-          <li>Website and program recognition</li>
-          <li>Two reception guest passes</li>
+          <li>Name on event banner</li>
+          <li>Name on event shirt</li>
+          <li>Mic shoutout at the event</li>
+          <li>Social media shoutout</li>
         </ul>
+        <div class="tier__foot">
+          <a class="btn btn--ghost btn--sm" href="#" data-link="clean">Sponsor This Level</a>
+        </div>
+      </div>
+
+      <div class="tier">
+        <div class="tier__name">Icing</div>
+        <div class="tier__sub">Bar &amp; Food Sponsor</div>
+        <div class="tier__price">$500</div>
+        <div class="tier__avail">10 available</div>
+        <ul>
+          <li>Logo displayed at the bar and food area</li>
+          <li>Name on event shirt</li>
+          <li>Mic shoutout at the event</li>
+          <li>Social media shoutout</li>
+        </ul>
+        <div class="tier__foot">
+          <a class="btn btn--ghost btn--sm" href="#" data-link="icing">Sponsor This Level</a>
+        </div>
       </div>
     </div>
 
     <div class="sponsor-note">
-      <p><strong>Team entry:</strong> $3,500 per team — includes ice time, officials, custom jerseys for up to 15 skaters and 2 goalies, locker room, and reception access for the full roster. <strong>Individual free agents:</strong> $250 per player, placed on a house team.</p>
+      <p><strong>Skater spots are included.</strong> The Cup brings four skaters, and Crispy Sweaters and Biscuit Backer each bring two — so your sponsorship puts your people on the ice, not just your logo on a banner.</p>
       <p style="margin-top:.75rem"><strong>In-kind and raffle donations welcome.</strong> Equipment, gift cards, suite tickets, and services all help. <a href="#contact" style="color:var(--gold)">Reach out</a> and we'll build a package that fits.</p>
     </div>
   </div>
 </section>
 
 <!-- ===================== REGISTER =====================
-     SET THE REGISTRATION URL IN THE SCRIPT AT THE BOTTOM OF THIS FILE.
+     SET ALL LINKS IN THE "LINKS" OBJECT AT THE BOTTOM OF THIS FILE.
 ======================================================= -->
 <section class="section register reveal" id="register">
   <div class="wrap">
     <p class="kicker kicker--center">Registration</p>
     <h2>Claim Your Ice Time</h2>
-    <p>Team entries and sponsorships are processed through our secure registration and payment portal. Spots are limited by available ice — first paid, first confirmed.</p>
+    <p>Player registration and sponsorships are processed through our secure payment portal. Spots are limited by available ice — first paid, first confirmed.</p>
     <div class="register__cta">
-      <a class="btn btn--dark" href="#" data-reg data-reg-label="Register &amp; Pay Online">Register &amp; Pay Online</a>
-      <a class="btn btn--outline-dark" href="#contact">Talk to an Organizer</a>
+      <a class="btn btn--dark" href="#" data-link="player">Register as a Player</a>
+      <a class="btn btn--outline-dark" href="#sponsors">Choose a Sponsorship</a>
     </div>
     <p class="register__note" id="reg-note">Registration portal opens soon — email us to be first in line.</p>
   </div>
@@ -626,10 +753,11 @@ p{margin:0}
         <h3>Event Info</h3>
         <ul>
           <li><a href="#events">2026 — Pittsburgh, PA</a></li>
-          <li><a href="#events">2027 — Odessa, TX</a></li>
+          <li><a href="#events">2027 — Odessa, TX (Twig &amp; Puck)</a></li>
+          <li><a href="#impact">Past Events &amp; Impact</a></li>
           <li><a href="#schedule">Game Day Schedule</a></li>
           <li><a href="#sponsors">Sponsorship Levels</a></li>
-          <li><a href="#register" data-reg>Register</a></li>
+          <li><a href="#register">Register</a></li>
         </ul>
       </div>
       <div>
@@ -650,33 +778,46 @@ p{margin:0}
 
 <script>
 /* =====================================================================
-   >>> SET YOUR REGISTRATION / PAYMENT LINK HERE <<<
-   Paste the full URL between the quotes, e.g.
-   const REGISTRATION_URL = "https://checkout.example.com/blades-2026";
-   Leave it empty ("") and the buttons stay disabled with a
-   "opens soon" message until you're ready.
-   ===================================================================== */
-const REGISTRATION_URL = "";
+   PASTE YOUR LINKS HERE
+   ---------------------------------------------------------------------
+   One URL per line. "player" is the player registration link; the rest
+   are the checkout links for each sponsorship level.
 
-/* --- apply the link to every Register button --- */
+   Example:
+     player:  "https://checkout.example.com/blades-2026-player",
+
+   Any link you leave empty ("") automatically disables its button and
+   shows a "coming soon" state — so you can go live one link at a time.
+   ===================================================================== */
+const LINKS = {
+  player:  "",   // Player Registration
+  cup:     "",   // The Cup — $8,000
+  crispy:  "",   // Crispy Sweaters — $4,000
+  biscuit: "",   // Biscuit Backer — $2,500
+  clean:   "",   // Clean Sheet — $1,000
+  icing:   ""    // Icing (Bar/Food) — $500
+};
+
+/* --- wire every button to its link --- */
 (function(){
-  var links = document.querySelectorAll('[data-reg]');
-  var note = document.getElementById('reg-note');
-  if (REGISTRATION_URL) {
-    links.forEach(function(a){
-      a.setAttribute('href', REGISTRATION_URL);
+  var buttons = document.querySelectorAll('[data-link]');
+  buttons.forEach(function(a){
+    var url = LINKS[a.getAttribute('data-link')];
+    if (url) {
+      a.setAttribute('href', url);
       a.setAttribute('target','_blank');
       a.setAttribute('rel','noopener');
       a.removeAttribute('aria-disabled');
-    });
-    if (note) note.textContent = 'Secure payment processed through our registration partner.';
-  } else {
-    links.forEach(function(a){
-      if (a.getAttribute('href') === '#') {
-        a.setAttribute('aria-disabled','true');
-        a.addEventListener('click', function(e){ e.preventDefault(); });
-      }
-    });
+    } else {
+      a.setAttribute('href','#');
+      a.setAttribute('aria-disabled','true');
+      a.setAttribute('title','Link coming soon');
+      a.addEventListener('click', function(e){ e.preventDefault(); });
+    }
+  });
+  var note = document.getElementById('reg-note');
+  if (note && LINKS.player) {
+    note.textContent = 'Secure payment processed through our registration partner.';
   }
 })();
 
